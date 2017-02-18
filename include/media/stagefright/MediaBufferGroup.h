@@ -29,6 +29,8 @@ class MetaData;
 
 class MediaBufferGroup : public MediaBufferObserver {
 public:
+    MediaBufferGroup();
+    
     MediaBufferGroup(size_t growthLimit = 0);
 
     // create a media buffer group with preallocated buffers
