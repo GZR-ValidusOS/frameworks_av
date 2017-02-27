@@ -29,7 +29,9 @@ class MetaData;
 
 class MediaBufferGroup : public MediaBufferObserver {
 public:
-    MediaBufferGroup(size_t growthLimit = 0);
+    MediaBufferGroup();
+
+    MediaBufferGroup(size_t growthLimit);
 
     // create a media buffer group with preallocated buffers
     MediaBufferGroup(size_t buffers, size_t buffer_size, size_t growthLimit = 0);
@@ -49,10 +51,7 @@ public:
     // If requestedSize is > 0, the returned MediaBuffer should have buffer
     // size of at least requstedSize.
     status_t acquire_buffer(
-            MediaBuffer **buffer, bool nonBlocking, size_t requestedSize);
-
-    status_t acquire_buffer(MediaBuffer **buffer);
-    status_t acquire_buffer(MediaBuffer **buffer, bool nonBlocking);
+            MediaBuffer **buffer, bool nonBlocking = false, size_t requestedSize = 0);
 
     size_t buffers() const { return mBuffers.size(); }
 
